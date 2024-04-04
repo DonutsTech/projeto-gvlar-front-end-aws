@@ -96,7 +96,7 @@
 
   &__third {
     width: 328px;
-    height: 14px;
+    height: 56px;
     display: flex;
     justify-content: space-between;
   }
@@ -123,8 +123,8 @@
 .website {
   width: 91px;
   height: 13px;
-  text-align: left;
-  font: normal normal normal 4px/8px Helvetica;
+  // text-align: left;
+  font: normal normal normal 8px/12px Helvetica;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
@@ -132,67 +132,36 @@
 
 .mn {
   width: 88px;
-  height: 13px;
   display: flex;
   flex-direction: row;
   text-decoration: none;
   align-items: center;
   justify-content: space-between;
 
-  &:hover {
-    .mn__logo {
-      background-image: url('../../../assets/mn/mnColor.svg');
-    }
-
-    .mn__box__colorOne {
-      color: #37e2d5;
-    }
-
-    .mn__box__colorTwo {
-      color: #c70a80;
-    }
-  }
-
   &__logo {
-    width: 19px;
-    height: 9px;
-    background-image: url('../../../assets/mn/mnWhite.svg');
-    background-size: cover;
+    width: 24px;
+    height: 21.35px;
+    background-image: url('../../../assets/footer/iconDonutsTech2.svg');
     background-repeat: no-repeat;
   }
 
+
   &__box {
     p {
-      height: 5px;
-      text-align: left;
-      font: normal normal normal 4px Helvetica;
-      letter-spacing: 0px;
+      text-align: center;
+      font: normal normal normal 8px Helvetica;
       color: #ffffff;
       opacity: 1;
     }
 
+    svg {
+      width: auto;
+      height: 21.35px;
+    }
+
     div {
       display: flex;
-
-      span {
-        height: 5px;
-        text-align: left;
-        font: normal normal normal 4px Helvetica;
-        letter-spacing: 0px;
-        opacity: 1;
-      }
-
-      p {
-        margin: 0 2px;
-      }
     }
 
-    &__colorOne {
-      color: #ffffff;
-    }
-
-    &__colorTwo {
-      color: #ffffff;
-    }
   }
 }

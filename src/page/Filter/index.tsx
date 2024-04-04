@@ -1,7 +1,7 @@
 import { FormEvent, useCallback, useEffect, useState } from 'react';
 import Form from './Form';
 import style from './filter.module.scss';
-import { ErrorAxios, FilterPageProperty, PageFilter } from '@/types';
+import { ErrorAxios, FilterPageProperty, Message as TypeMessage, PageFilter } from '@/types';
 import { pageWithFilter } from '@/service/api/property';
 import Card from '@/components/Card';
 import 'glider-js/glider.min.css';
@@ -19,6 +19,7 @@ import Input from '@/components/Input';
 import Button from '@/components/Button';
 import { validateEmail, validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
+import Message from '@/components/Message';
 
 interface FormFiltersEmail {
   email: string;
@@ -27,6 +28,7 @@ interface FormFiltersEmail {
 }
 
 const Filter = () => {
+  const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
   const [data, setData] = useState<PageFilter>({} as PageFilter);
   const [loading, setLoading] = useState<boolean>(false);
   const [_error, setError] = useState<ErrorAxios | null>(null);
@@ -166,8 +168,18 @@ const Filter = () => {
       text: transformationEmailForGvLar(filterPage),
     });
 
-    console.log(data);
+    if (data && 'sucess' in data) {
+      setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (message.message) {
+        setMessage({} as TypeMessage);
+      }
+    }, 10000);
+  }, [message]);
 
   return (
     <section className={style.main}>
@@ -272,6 +284,7 @@ const Filter = () => {
                 busca. Mas não se desanime, deixe o seu e-mail que entraremos em contato assim que
                 tivermos imóveis correspondentes.
               </p>
+              {!(message.message === '') && <Message mss={message} />}
               <form className={style['box-information-about-filters-form']}>
                 <Input
                   type='text'

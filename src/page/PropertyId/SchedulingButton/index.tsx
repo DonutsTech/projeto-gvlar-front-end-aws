@@ -1,7 +1,7 @@
-import { FormEvent, useCallback, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import style from './schedulingButton.module.scss';
 import ReactModal from 'react-modal';
-import { Card as TypeCard } from '@/types';
+import { Message as TypeMessage, Card as TypeCard } from '@/types';
 import Card from '@/components/Card';
 import Input from '@/components/Input';
 import DateCalendar from './Date';
@@ -10,6 +10,7 @@ import Closet from '@/assets/menu/MenuCloset.svg';
 import Button from '@/components/Button';
 import { sendEmail } from '@/service/api/email';
 import { formatarData } from '@/functions/transformation';
+import Message from '@/components/Message';
 
 interface Form {
   name: string;
@@ -21,6 +22,7 @@ interface Form {
 }
 
 const SchedulingButton = (card: TypeCard) => {
+  const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [form, setForm] = useState<Form>({} as Form);
 
@@ -51,6 +53,14 @@ const SchedulingButton = (card: TypeCard) => {
     setOpenModal(!openModal);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (message.message) {
+        setMessage({} as TypeMessage);
+      }
+    }, 10000);
+  }, [message]);
+
   const sendEmailAboutSchedule = async () => {
     const data = await sendEmail({
       name: form.name,
@@ -66,7 +76,9 @@ const SchedulingButton = (card: TypeCard) => {
       }. Gostaríamos de confirmar a disponibilidade deste imóvel para a data mencionada.`,
     });
 
-    console.log(data);
+    if (data && 'sucess' in data) {
+      setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+    }
   };
 
   return (
@@ -98,6 +110,7 @@ const SchedulingButton = (card: TypeCard) => {
               <Card {...card} to='/' action={true} />
             </div>
             <form className={style['box-form']}>
+              {!(message.message === '') && <Message mss={message} />}
               <Input type='text' name='name' placeholder='Nome' onChange={handleFormChange} />
               <Input
                 type='text'

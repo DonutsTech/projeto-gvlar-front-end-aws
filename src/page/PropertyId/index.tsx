@@ -47,7 +47,7 @@ const PropertyId = () => {
 
   useEffect(() => {
     scrollToTop();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function fetchApi() {
@@ -108,11 +108,7 @@ const PropertyId = () => {
                 <Slider {...settings}>
                   {data.photographs.length > 0 ? (
                     data.photographs.map(({ id, describe, url }) => (
-                      <ModalImage
-                        key={id}
-                        img={`${Environment.URL_BASE}/uploads/${url}`}
-                        alt={describe}
-                      />
+                      <ModalImage key={id} img={`${Environment.URL_IMAGE}/${url}`} alt={describe} />
                     ))
                   ) : (
                     <ModalImage img={imageEmpty} alt='imóvel ainda sem imagem' />
@@ -204,8 +200,8 @@ const PropertyId = () => {
                         {!(data.sell === null) && data.sell > 0
                           ? `R$ ${transformationFloatString(data.sell)}`
                           : data.sell === 0
-                          ? 'A combinar'
-                          : '-'}
+                            ? 'A combinar'
+                            : '-'}
                       </p>
                     </div>
                     <div>
@@ -214,8 +210,8 @@ const PropertyId = () => {
                         {!(data.rental === null) && data.rental > 0
                           ? `R$ ${transformationFloatString(data.rental)}`
                           : data.rental === 0
-                          ? 'A combinar'
-                          : '-'}
+                            ? 'A combinar'
+                            : '-'}
                       </p>
                     </div>
                   </div>
@@ -282,8 +278,8 @@ const PropertyId = () => {
                             {!(data.sell === null) && data.sell > 0
                               ? `R$ ${transformationFloatString(data.sell)}`
                               : data.sell === 0
-                              ? 'A combinar'
-                              : '-'}
+                                ? 'A combinar'
+                                : '-'}
                           </p>
                         </div>
                         <div>
@@ -292,8 +288,8 @@ const PropertyId = () => {
                             {!(data.rental === null) && data.rental > 0
                               ? `R$ ${transformationFloatString(data.rental)}`
                               : data.rental === 0
-                              ? 'A combinar'
-                              : '-'}
+                                ? 'A combinar'
+                                : '-'}
                           </p>
                         </div>
                       </div>
@@ -371,7 +367,7 @@ const PropertyId = () => {
                   >
                     {dataFilter.map((property) => (
                       <div style={cardStyle} key={property.id}>
-                        <Card {...property} to={`encontrar/imovel/${property.id}`} />
+                        <Card {...property} to={`../encontrar/imovel/${property.id}`} />
                       </div>
                     ))}
                   </Glider>

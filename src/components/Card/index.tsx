@@ -64,12 +64,13 @@ const Card: React.FC<CardProps> = ({
         [style['card-action']]: action === true,
       })}
       to={to}
+      relative='route'
     >
       <div className={style.images}>
         <Slider {...settings}>
           {photographs.length > 0 ? (
             photographs.map(({ id, describe, url }) => (
-              <img key={id} src={`${Environment.URL_BASE}/uploads/${url}`} alt={describe} />
+              <img key={id} src={`${Environment.URL_IMAGE}/${url}`} alt={describe} />
             ))
           ) : (
             <img src={imageEmpty} alt='imóvel ainda sem imagem' />

@@ -7,20 +7,24 @@ const NavFooter = () => {
   const { user } = useContext(Context);
   return (
     <>
-      <NavLink className={style.home} to='/'>
+      <NavLink preventScrollReset={true} className={style.home} to='/'>
         <div />
         <span>Home</span>
       </NavLink>
-      <NavLink className={style.about} to='/sobrenos'>
+      <NavLink preventScrollReset={true} className={style.about} to='/sobrenos'>
         Sobre nós
       </NavLink>
-      <NavLink className={style.filter} to='/encontrar/imovel'>
+      <NavLink preventScrollReset={true} className={style.filter} to='/encontrar/imovel'>
         Encontre o seu imóvel
       </NavLink>
-      <NavLink className={style.announce} to={user ? '/adm/imoveis' : '/login'}>
+      <NavLink
+        preventScrollReset={true}
+        className={style.announce}
+        to={user ? '/adm/imoveis' : '/login'}
+      >
         Anuncie o seu imóvel
       </NavLink>
-      <NavLink className={style.login} to={user ? '/adm' : '/login'}>
+      <NavLink preventScrollReset={true} className={style.login} to={user ? '/adm' : '/login'}>
         <span>Minha conta</span>
         <div />
       </NavLink>

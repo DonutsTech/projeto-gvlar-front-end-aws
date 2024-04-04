@@ -46,7 +46,7 @@ const UploadImages: React.FC<UploadImagesProps> = ({
                 >
                   x
                 </button>
-                <img src={`${Environment.URL_BASE}/uploads/${url}`} alt={describe} />
+                <img src={`${Environment.URL_IMAGE}/${url}`} alt={describe} />
               </div>
             ))}
           </Glider>

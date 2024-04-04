@@ -1,5 +1,4 @@
 import Logo from '@/assets/gvlar/logoWhite.svg';
-import { NavLink } from 'react-router-dom';
 import style from './footerMobile.module.scss';
 import Effect from '@/img/effect/small.png';
 import ButtonArrow from '../components/ButtonArrow';
@@ -12,6 +11,7 @@ import Contact from '../components/Contact';
 import SocialNetWork from '../components/SocialNetWork';
 import NavFooter from '../components/NavFooter';
 import { Environment } from '@/env';
+import LogoTipoDT from '@/assets/footer/logoTipoDonutsTech.svg';
 
 const FooterMobile = () => {
   return (
@@ -57,15 +57,13 @@ const FooterMobile = () => {
             className={style.mn}
             target='_black'
             rel='noopener'
-            href='https://www.instagram.com/mn.techmkt/'
+            href='https://www.instagram.com/donuts.tech/'
           >
-            <div className={style.mn__logo} />
             <div className={style.mn__box}>
               <p>Pensado, Criado e Desenvolvido por</p>
               <div>
-                <span className={style.mn__box__colorOne}>Tecnologia</span>
-                <p>e</p>
-                <span className={style.mn__box__colorTwo}>Comunicação</span>
+                <div className={style.mn__logo}/>
+                <LogoTipoDT />
               </div>
             </div>
           </a>

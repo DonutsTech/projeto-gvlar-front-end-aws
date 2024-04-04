@@ -18,7 +18,7 @@ interface ChangePassword {
 // Token
 export const checkToken = async (token: string) => {
   try {
-    const { data } = await api.get<GetUser>('/auth/check-token', {
+    const { data } = await api.get<GetUser>('auth/check-token', {
       headers: { Authorization: `Bearer ${token}` },
     });
     return data as GetUser;
@@ -34,7 +34,7 @@ export const checkToken = async (token: string) => {
 // User
 export const loginUser = async (body: Login) => {
   try {
-    const { data } = await api.post<GetUser>('/auth/login', {
+    const { data } = await api.post<GetUser>('auth/login', {
       ...body,
     });
     return data as GetUser;
@@ -49,7 +49,7 @@ export const loginUser = async (body: Login) => {
 
 export const registerUser = async (body: CreateUserClient) => {
   try {
-    const { data } = await api.post<GetUser>('/auth/register', { ...body });
+    const { data } = await api.post<GetUser>('auth/register', { ...body });
 
     return data as GetUser;
   } catch (error: any) {
@@ -63,7 +63,7 @@ export const registerUser = async (body: CreateUserClient) => {
 
 export const resendEmail = async (email: string) => {
   try {
-    const { data } = await api.post<Sucess>('/auth/validate', { email });
+    const { data } = await api.post<Sucess>('auth/validate', { email });
 
     return data as Sucess;
   } catch (error: any) {
@@ -77,7 +77,7 @@ export const resendEmail = async (email: string) => {
 
 export const logout = async (token: string) => {
   try {
-    const { data } = await api.get<Sucess>('/auth/logout', {
+    const { data } = await api.get<Sucess>('auth/logout', {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -94,7 +94,7 @@ export const logout = async (token: string) => {
 export const updateUser = async (token: string, body: UpdateUser) => {
   try {
     const { data } = await api.patch<User>(
-      '/auth/register',
+      'api/auth/register',
       { ...body },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -114,7 +114,7 @@ export const updateUser = async (token: string, body: UpdateUser) => {
 export const changePassword = async (token: string, body: ChangePassword) => {
   try {
     const { data } = await api.patch<User>(
-      '/auth/changepassword',
+      'auth/changepassword',
       { ...body },
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -133,7 +133,7 @@ export const changePassword = async (token: string, body: ChangePassword) => {
 
 export const validationEmail = async (id: number) => {
   try {
-    const { data } = await api.get<Sucess>(`/auth/validation/${id}`);
+    const { data } = await api.get<Sucess>(`auth/validation/${id}`);
 
     return data as Sucess;
   } catch (error: any) {
@@ -147,7 +147,7 @@ export const validationEmail = async (id: number) => {
 
 export const forgetPassword = async (email: string) => {
   try {
-    const { data } = await api.post<Sucess>(`/auth/forget`, { email });
+    const { data } = await api.post<Sucess>(`auth/forget`, { email });
 
     return data as Sucess;
   } catch (error: any) {
@@ -161,7 +161,7 @@ export const forgetPassword = async (email: string) => {
 
 export const resetPassword = async (id: number, reset: Reset) => {
   try {
-    const { data } = await api.post<Sucess>(`/auth/reset/${id}`, {
+    const { data } = await api.post<Sucess>(`auth/reset/${id}`, {
       password: reset.password,
       number: reset.one + reset.two + reset.three + reset.four,
     });

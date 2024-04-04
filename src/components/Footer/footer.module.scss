@@ -12,11 +12,14 @@
 
   @media (min-width: $desk-min) {
   }
+
+
 }
 
 .effect {
   width: 100%;
-  height: auto;
+  height: 110%;
+  object-fit: cover;
 }
 
 .information {
@@ -104,7 +107,6 @@
 
 .website {
   width: 699px;
-  height: 13px;
   display: flex;
   justify-content: space-between;
 
@@ -128,45 +130,33 @@
     display: flex;
     align-items: baseline;
     text-decoration: none;
+    height: auto;
+    width: auto;
+    margin-left: 0.5em;
 
     div {
-      width: 19px;
-      height: 9px;
-      background-image: url('../../assets/mn/mnWhite.svg');
-      background-size: cover;
+      background-image: url('../../assets/footer/iconDonutsTech.svg');
       background-repeat: no-repeat;
+      height: 21.35px;
+      width: 24px;
     }
 
-    span {
-      margin: 0 2px;
+
+    svg {
+      height: 21.35px;
     }
 
     &:hover {
-      div {
-        background-image: url('../../assets/mn/mnColor.svg');
-      }
 
-      .mn__link__colorOne {
-        font: oblique normal normal 10px/14px Helvetica;
-        letter-spacing: 0px;
-        color: #37e2d5;
-      }
+       scale: 1.2;
 
-      .mn__link__colorTwo {
-        font: oblique normal normal 10px/14px Helvetica;
-        letter-spacing: 0px;
-        color: #c70a80;
-      }
-    }
+       div {
+         background-image: url('../../assets/footer/iconDonutsTech2.svg');
+       }
 
-    &__colorOne {
-      color: #ffffff;
-    }
-
-    &__colorTwo {
-      color: #ffffff;
-    }
+     }
   }
+
 }
 
 .div {

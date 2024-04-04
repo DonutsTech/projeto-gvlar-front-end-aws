@@ -13,7 +13,6 @@ const Home = () => {
     method: 'get',
     url: '/properties/random/list',
   });
-
   useEffect(() => {
     scrollToTop();
   }, []);

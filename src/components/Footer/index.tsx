@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import FooterMobile from './FooterMobile';
 import Logo from '@/assets/gvlar/logoWhite.svg';
 import style from './footer.module.scss';
@@ -13,6 +12,7 @@ import Contact from './components/Contact';
 import SocialNetWork from './components/SocialNetWork';
 import NavFooter from './components/NavFooter';
 import { Environment } from '@/env';
+import LogoTipoDT from '@/assets/footer/logoTipoDonutsTech.svg';
 
 const Footer = () => {
   return (
@@ -66,13 +66,10 @@ const Footer = () => {
                 className={style.mn__link}
                 target='_black'
                 rel='noopener'
-                href='https://www.instagram.com/mn.techmkt/'
+                href='https://www.instagram.com/donuts.tech/'
               >
                 <div />
-                <p>
-                  <span className={style.mn__link__colorOne}>Tecnologia</span>e
-                  <span className={style.mn__link__colorTwo}>Comunicação</span>
-                </p>
+                <LogoTipoDT />
               </a>
             </div>
           </div>
