@@ -1,5 +1,7 @@
+import process from 'process';
+
 export const Environment = {
-  URL_BASE: `http://localhost:8000/api`,
-  URL_IMAGE: `https://image-gvlar.s3.amazonaws.com`,
-  URL_DOMINIO: `http://localhost:8000`,
+  URL_BASE: process.env.URL_BASE,
+  URL_IMAGE: process.env.URL_IMAGE,
+  URL_DOMINIO: process.env.URL_DOMINIO,
 };
