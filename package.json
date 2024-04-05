@@ -1,5 +1,4 @@
 {
-  "homepage": ".",
   "name": "front-end",
   "private": true,
   "version": "0.0.0",
@@ -15,7 +14,6 @@
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "date-fns": "^3.0.6",
-    "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",
