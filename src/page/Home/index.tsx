@@ -22,7 +22,7 @@ const Home = () => {
       <Banner />
       <Announce />
       <Company />
-      {data.length && <Opportunities properties={data} />}
+      {data && <Opportunities properties={data} />}
     </>
   );
 };
