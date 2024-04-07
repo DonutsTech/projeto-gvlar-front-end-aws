@@ -8,7 +8,6 @@ const api: AxiosInstance = axios.create({
   baseURL: Environment.URL_BASE,
   headers: {
     'Content-type': 'application/json',
-    'X-Frontend-Token': 'frontend',
   },
 });
 
