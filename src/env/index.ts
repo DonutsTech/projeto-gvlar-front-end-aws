@@ -1,7 +1,7 @@
 export const Environment = {
-  URL_BASE: '',
+  URL_BASE: 'https://projeto-gvlar-back-end.onrender.com',
   URL_IMAGE: 'https://image-gvlar.s3.amazonaws.com/',
-  URL_DOMINIO: '.',
+  URL_DOMINIO: 'https://projeto-gvlar-front-end.onrender.com',
 };
 
 //https://projeto-gvlar-back-end.onrender.com back-end;
