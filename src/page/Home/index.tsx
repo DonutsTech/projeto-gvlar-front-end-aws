@@ -2,7 +2,7 @@ import { useAxios } from '@/service/hook/use-axios';
 import Announce from './Announce';
 import Banner from './Banner';
 import Company from './Company';
-import Opportunities from './Opportunities';
+//import Opportunities from './Opportunities';
 import api from '@/service/api/axios-config';
 import { useEffect } from 'react';
 import { scrollToTop } from '@/functions/scroll';
@@ -17,12 +17,14 @@ const Home = () => {
     scrollToTop();
   }, []);
 
+  console.log(data);
+
   return (
     <>
       <Banner />
       <Announce />
       <Company />
-      {data && <Opportunities properties={data} />}
+      {/*data && <Opportunities properties={data} />*/}
     </>
   );
 };
