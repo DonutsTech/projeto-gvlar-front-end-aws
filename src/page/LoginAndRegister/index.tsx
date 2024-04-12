@@ -17,7 +17,7 @@ const LoginAndRegister = () => {
 
   const [message, setMessage] = useState<Message>({} as Message);
   const [login, setLogin] = useState<Login>({} as Login);
-  const [create, setCreate] = useState<CreateUser>({} as CreateUser);
+  const [create, setCreate] = useState<CreateUser>({ check: true } as CreateUser);
 
   useEffect(() => {
     scrollToTop();
@@ -83,7 +83,7 @@ const LoginAndRegister = () => {
       setMessage({ message: text, type: 'create', status: 201 });
     }
 
-    setCreate({} as CreateUser);
+    setCreate({ check: true } as CreateUser);
   };
 
   const handleResendEmailClick = async () => {
