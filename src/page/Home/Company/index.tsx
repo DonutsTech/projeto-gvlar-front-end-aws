@@ -63,7 +63,7 @@ const Company = () => {
             image={Marisa}
             instagram='@marisachessa'
             clientRef='https://www.instagram.com/marisachessa/?igshid=OGQ5ZDc2ODk2ZA%3D%3D'
-            text='Excelente atendimento da equipe da Gvlar Imóveis durante a visita ao imóvel para locação. Profissionalismo e atenção aos detalhes impressionantes, tornando a experiência muito agradável. Recomendo a todos em busca de qualidade e eficiência'
+            text='Estou imensamente grato pelos serviços especializados prestados pela Gvlar. Quando precisei de ajuda para melhorar o contrato de locação de imóveis que meu pai estava alugando para outro inquilino, a equipe da Gvlar foi além das minhas expectativas. Eles não apenas nos ajudaram a melhorar as condições do contrato, mas também assumiram toda a burocracia envolvida, permitindo que meu pai se livrasse das preocupações administrativas. Sua dedicação e profissionalismo trouxe tudo mais fácil e sem complicações. Recomendo sinceramente a Gvlar a todos que buscam uma experiência imobiliária positiva e sem estresse. Muito obrigada por sua assistência impecável!'
           />
 
           <CardClient
