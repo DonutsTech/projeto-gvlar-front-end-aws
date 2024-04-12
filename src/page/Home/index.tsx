@@ -22,7 +22,7 @@ const Home = () => {
       <Banner />
       <Announce />
       <Company />
-      {data && <Opportunities properties={data} />}
+      {Array.isArray(data) && data.length > 0 && <Opportunities properties={data} />}
     </>
   );
 };
