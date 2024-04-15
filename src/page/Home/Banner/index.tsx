@@ -7,8 +7,18 @@ import videoMobile from '@/video/gvlarMobile.mp4';
 import videoDesk from '@/video/gvlarDesk.mp4';
 import GVlar from '@/assets/gvlar/logoWhite.svg';
 import classNames from 'classnames';
+import { FormEvent } from 'react';
+import { FilterPageProperty } from '@/types';
+import { NavLink } from 'react-router-dom';
 
-const Banner = () => {
+interface BannerProps {
+  handleFilterChange: (
+    e: FormEvent<HTMLInputElement | HTMLButtonElement | HTMLTextAreaElement>,
+  ) => void;
+  filter: FilterPageProperty;
+}
+
+const Banner = ({ filter, handleFilterChange }: BannerProps) => {
   return (
     <section className={style.banner}>
       <video
@@ -37,14 +47,58 @@ const Banner = () => {
         </div>
         <form className={style.form}>
           <div className={style.party}>
-            <InputSelect iten='property' valeu='' handleChange={() => console.log('oi')} />
+            <InputSelect
+              iten='property'
+              valeu={filter.about === undefined ? '' : filter.about}
+              handleChange={handleFilterChange}
+            />
             <div className={style['box-check']}>
-              <InputCheck className={style.check} label='comprar' checked={false} />
-              <InputCheck className={style.check} label='alugar' checked={false} />
+              <InputCheck
+                className={style.check}
+                type='checkbox'
+                label='Comprar'
+                title='business'
+                value={
+                  filter.business === 'ambos'
+                    ? 'aluguel'
+                    : filter.business === 'aluguel'
+                      ? 'ambos'
+                      : filter.business === 'venda'
+                        ? ''
+                        : 'venda'
+                }
+                checked={filter.business === 'ambos' || filter.business === 'venda' ? true : false}
+                onChange={handleFilterChange}
+              />
+              <InputCheck
+                className={style.check}
+                label='Alugar'
+                title='business'
+                value={
+                  filter.business === 'ambos'
+                    ? 'venda'
+                    : filter.business === 'venda'
+                      ? 'ambos'
+                      : filter.business === 'aluguel'
+                        ? ''
+                        : 'aluguel'
+                }
+                checked={
+                  filter.business === 'ambos' || filter.business === 'aluguel' ? true : false
+                }
+                onChange={handleFilterChange}
+              />
             </div>
           </div>
-          <InputSearch placeholder='busque aqui o seu imóvel' />
-          <ButtonIcon name='Buscar' onClick={() => console.log('oii')} />
+          <InputSearch
+            name='text'
+            onChange={handleFilterChange}
+            value={filter.text === undefined ? '' : filter.text}
+            placeholder='busque aqui o seu imóvel'
+          />
+          <NavLink to={`/encontrar/imovel`} state={{ state: filter }}>
+            <ButtonIcon name='Buscar' onClick={() => {}} />
+          </NavLink>
         </form>
       </div>
     </section>
