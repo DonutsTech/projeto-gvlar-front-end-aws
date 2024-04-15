@@ -72,6 +72,7 @@ const Banner = ({ filter, handleFilterChange }: BannerProps) => {
               />
               <InputCheck
                 className={style.check}
+                type='checkbox'
                 label='Alugar'
                 title='business'
                 value={
