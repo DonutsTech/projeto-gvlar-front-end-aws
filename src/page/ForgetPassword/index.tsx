@@ -4,7 +4,7 @@ import Message from '@/components/Message';
 import { validateEmail } from '@/functions/validate';
 import { forgetPassword } from '@/service/api/auth';
 import { Message as TypeMessage } from '@/types';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, KeyboardEvent, useEffect, useState } from 'react';
 import style from './forgetPassword.module.scss';
 import { scrollToTop } from '@/functions/scroll';
 
@@ -46,6 +46,12 @@ const ForgetPassword = () => {
     setEmail('');
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      sendEmailForForgetPassword();
+    }
+  };
+
   return (
     <section className={style.main}>
       <h1 className={style.title}>Redefinição de Senha por E-mail</h1>
@@ -63,6 +69,7 @@ const ForgetPassword = () => {
           name='email'
           id='emaillogin'
           label='E-mail:'
+          onKeyDown={handleKeyDown}
         />
         <Button
           name='Enviar e-mail'
