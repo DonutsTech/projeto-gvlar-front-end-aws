@@ -25,9 +25,15 @@ const AnimatedText = () => {
   return (
     <div className={style.main}>
       <div className={style.image}>
-        {currentText === 'Missão' ? <MissionOn /> : <MissionOff />}
-        {currentText === 'Visão' ? <VisionOn /> : <VisionOff />}
-        {currentText === 'Valores' ? <ValuesOn /> : <ValuesOff />}
+        <button onClick={() => setCurrentText('Missão')}>
+          {currentText === 'Missão' ? <MissionOn /> : <MissionOff />}
+        </button>
+        <button onClick={() => setCurrentText('Visão')}>
+          {currentText === 'Visão' ? <VisionOn /> : <VisionOff />}
+        </button>
+        <button onClick={() => setCurrentText('Valores')}>
+          {currentText === 'Valores' ? <ValuesOn /> : <ValuesOff />}
+        </button>
       </div>
       <div className={style.text}>
         <h3>{currentText}</h3>
