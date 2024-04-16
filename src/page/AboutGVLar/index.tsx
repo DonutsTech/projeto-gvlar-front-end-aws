@@ -78,6 +78,7 @@ const AboutGVLar = () => {
                 className={style.youtube}
                 target='_blank'
                 rel='noopener noreferrer'
+                aria-disabled='true'
                 href='mailto:gvlar@gvlar.com.br'
               >
                 <div />
@@ -86,6 +87,7 @@ const AboutGVLar = () => {
                 className={style.tiktok}
                 target='_blank'
                 rel='noopener noreferrer'
+                aria-disabled='true'
                 href='mailto:gvlar@gvlar.com.br'
               >
                 <div />

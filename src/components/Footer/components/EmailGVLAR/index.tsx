@@ -6,10 +6,10 @@ const EmailGVLAR = () => {
       className={style.email}
       target='_blank'
       rel='noopener noreferrer'
-      href='mailto:gvlar@gvlar.com.br'
+      href='mailto:contato@gvlar.com.br'
     >
       <div />
-      <span>gvlar@gvlar.com.br</span>
+      <span>contato@gvlar.com.br</span>
     </a>
   );
 };

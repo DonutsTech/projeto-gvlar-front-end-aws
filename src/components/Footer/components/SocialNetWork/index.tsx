@@ -25,7 +25,8 @@ const SocialNetWork = () => {
           className={style.youtube}
           target='_blank'
           rel='noopener noreferrer'
-          href='mailto:gvlar@gvlar.com.br'
+          aria-disabled='true'
+          href='mailto:contato@gvlar.com.br'
         >
           <div />
         </a>
@@ -33,7 +34,8 @@ const SocialNetWork = () => {
           className={style.tiktok}
           target='_blank'
           rel='noopener noreferrer'
-          href='mailto:gvlar@gvlar.com.br'
+          aria-disabled='true'
+          href='mailto:contato@gvlar.com.br'
         >
           <div />
         </a>

@@ -348,7 +348,14 @@ const PropertyId = () => {
                       </div>
                     </div>
                     <div className={style.margin}>
-                      <p className={style.paragraph}>{data.description}</p>
+                      <p
+                        className={classNames({
+                          [style.paragraph]: true,
+                          [style.description]: true,
+                        })}
+                      >
+                        {data.description}
+                      </p>
                     </div>
                   </div>
                 </div>

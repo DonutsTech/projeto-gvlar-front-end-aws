@@ -63,7 +63,7 @@ const Company = () => {
             image={Marisa}
             instagram='@marisachessa'
             clientRef='https://www.instagram.com/marisachessa/?igshid=OGQ5ZDc2ODk2ZA%3D%3D'
-            text='Agradeço imensamente à Gvlar pela sua assistência excepcional na melhoria do contrato de locação do imóvel do meu pai. Sua dedicação e profissionalismo foram fundamentais. Recomendo a Gvlar a todos que buscam uma experiência imobiliária tranquila. Muito obrigado!'
+            text='Agradeço imensamente à Gvlar pela sua assistência excepcional na melhoria do contrato de locação do imóvel do meu pai. Sua dedicação e profissionalismo foram fundamentais. Recomendo a Gvlar a todos que buscam uma experiência imobiliária tranquila.'
           />
 
           <CardClient
