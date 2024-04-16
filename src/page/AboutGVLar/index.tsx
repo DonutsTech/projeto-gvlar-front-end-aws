@@ -74,24 +74,12 @@ const AboutGVLar = () => {
               >
                 <div />
               </a>
-              <a
-                className={style.youtube}
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-disabled='true'
-                href='mailto:gvlar@gvlar.com.br'
-              >
+              <div className={style.youtube}>
                 <div />
-              </a>
-              <a
-                className={style.tiktok}
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-disabled='true'
-                href='mailto:gvlar@gvlar.com.br'
-              >
+              </div>
+              <div className={style.tiktok}>
                 <div />
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -135,22 +123,12 @@ const AboutGVLar = () => {
                 >
                   <div />
                 </a>
-                <a
-                  className={style.youtube}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  href='mailto:gvlar@gvlar.com.br'
-                >
+                <div className={style.youtube}>
                   <div />
-                </a>
-                <a
-                  className={style.tiktok}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  href='mailto:gvlar@gvlar.com.br'
-                >
+                </div>
+                <div className={style.tiktok}>
                   <div />
-                </a>
+                </div>
               </div>
             </div>
           </div>
