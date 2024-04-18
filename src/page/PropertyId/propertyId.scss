@@ -5,3 +5,7 @@
 .slick-next:before {
   color: #ee801f;
 }
+
+.slick-dots li button::before {
+  content: '';
+}

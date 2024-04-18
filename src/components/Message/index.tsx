@@ -15,7 +15,8 @@ const Message: React.FC<MessageNewProps> = ({ mss, handleResendEmailClick }: Mes
     type === 'delete' ||
     type === 'owner' ||
     type === 'successProperty' ||
-    type === 'successUser'
+    type === 'successUser' ||
+    type === 'mensagem'
   ) {
     return (
       <p
