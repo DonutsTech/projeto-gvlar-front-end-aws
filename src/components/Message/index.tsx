@@ -15,8 +15,7 @@ const Message: React.FC<MessageNewProps> = ({ mss, handleResendEmailClick }: Mes
     type === 'delete' ||
     type === 'owner' ||
     type === 'successProperty' ||
-    type === 'successUser' ||
-    type === 'mensagem'
+    type === 'successUser'
   ) {
     return (
       <p
@@ -64,6 +63,10 @@ const Message: React.FC<MessageNewProps> = ({ mss, handleResendEmailClick }: Mes
           : message}
       </p>
     );
+  }
+
+  if (type === 'mensagem') {
+    return <p className={classNames({ [style.message]: true, [style.colorwhite]: true })}>{message}</p>;
   }
 };
 

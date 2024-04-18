@@ -62,9 +62,10 @@ const SchedulingButton = (card: TypeCard) => {
         setMessage({} as TypeMessage);
         if (message.status === 201) {
           setOpenModal(false);
+          setForm({} as Form);
         }
       }
-    }, 5000);
+    }, 3000);
   }, [message]);
 
   const sendEmailAboutSchedule = async () => {
