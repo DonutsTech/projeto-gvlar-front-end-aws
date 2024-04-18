@@ -150,7 +150,7 @@ const MyProperty = () => {
   const handlePhotoOnClick = async () => {
     const formData = new FormData();
     formData.append('file', upload.file as File);
-    formData.append('describe', upload.describe);
+    formData.append('describe', (upload.describe === '' ? 'Foto do imóvel' : upload.describe));
 
     if (property.id) {
       let data = await uploadPhoto(property.id, formData, token);

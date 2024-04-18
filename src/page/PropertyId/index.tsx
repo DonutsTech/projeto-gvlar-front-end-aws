@@ -62,6 +62,8 @@ const PropertyId = () => {
 
           if (data && 'id' in data) {
             setData(data);
+          } else {
+            navigate('/');
           }
         }
       } catch (error: any) {

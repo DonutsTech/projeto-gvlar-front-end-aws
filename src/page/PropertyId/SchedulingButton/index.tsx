@@ -11,6 +11,7 @@ import Button from '@/components/Button';
 import { sendEmail } from '@/service/api/email';
 import { formatarData } from '@/functions/transformation';
 import Message from '@/components/Message';
+import { validatePhone } from '@/functions/validate';
 
 interface Form {
   name: string;
@@ -67,7 +68,7 @@ const SchedulingButton = (card: TypeCard) => {
       email: form.email,
       phone: form.phone,
       subject: `Agendamento do imovel id: ${card.id}`,
-      text: `Esse imóvel de referência ${card.id} despertou o interesse de ${
+      text: `Esse imóvel de referência ao id: ${card.id}, (link: https//www.gvlar.com.br/encontrar/imovel/${card.id}) despertou o interesse de ${
         form.name
       }, que está interessado(a) em agendar uma visita. A data selecionada para a visita é ${formatarData(
         form.date,
@@ -75,6 +76,10 @@ const SchedulingButton = (card: TypeCard) => {
         form.period
       }. Gostaríamos de confirmar a disponibilidade deste imóvel para a data mencionada.`,
     });
+
+    if (data && 'message' in data) {
+      setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
+    }
 
     if (data && 'sucess' in data) {
       setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
@@ -154,6 +159,7 @@ const SchedulingButton = (card: TypeCard) => {
               <div className={style['box-button']}>
                 <Button
                   name='Agendar'
+                  disabled={form.name === '' || !validatePhone(form.phone)}
                   onClick={() => {
                     sendEmailAboutSchedule();
                   }}
