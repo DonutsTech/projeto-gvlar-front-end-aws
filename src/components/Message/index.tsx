@@ -66,7 +66,9 @@ const Message: React.FC<MessageNewProps> = ({ mss, handleResendEmailClick }: Mes
   }
 
   if (type === 'mensagem') {
-    return <p className={classNames({ [style.message]: true, [style.colorwhite]: true })}>{message}</p>;
+    return (
+      <p className={classNames({ [style.message]: true, [style.colorwhite]: true })}>{message}</p>
+    );
   }
 };
 

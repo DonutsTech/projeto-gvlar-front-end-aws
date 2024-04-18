@@ -17,7 +17,7 @@ import {
 } from '@/functions/transformation';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import { validateEmail, validatePhone } from '@/functions/validate';
+import { validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
 import { useLocation } from 'react-router-dom';
 import Message from '@/components/Message';
@@ -182,13 +182,15 @@ const Filter = () => {
       text: transformationEmailForGvLar(filterPage),
     });
 
+    setForm({} as FormFiltersEmail);
+
     if (data && 'message' in data) {
-      setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
+      setMessage({ message: 'Mensagem não enviado', type: 'create', status: data.statusCode });
       setLoadingMensagem(false);
     }
 
     if (data && 'sucess' in data) {
-      setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+      setMessage({ message: 'Mensagem enviada', status: 201, type: 'create' });
       setLoadingMensagem(false);
     }
   };
@@ -197,9 +199,14 @@ const Filter = () => {
     setTimeout(() => {
       if (message.message) {
         setMessage({} as TypeMessage);
+        if (message.status === 201) {
+          setFilterPage({} as FilterPageProperty);
+          setLoading(true);
+          fetchData(1, {});
+        }
       }
     }, 10000);
-  }, [message]);
+  }, [message, fetchData]);
 
   return (
     <section className={style.main}>
@@ -306,29 +313,18 @@ const Filter = () => {
               </p>
               {!(message.message === '') && <Message mss={message} />}
               <form className={style['box-information-about-filters-form']}>
-                <Input
-                  type='text'
-                  name='email'
-                  onChange={handleFormChange}
-                  placeholder='Informe aqui seu melhor e-mail'
-                />
-                <Input type='text' name='name' onChange={handleFormChange} placeholder='Nome' />
+                <Input type='text' name='name' onChange={handleFormChange} placeholder='Nome*' />
+                <Input type='text' name='email' onChange={handleFormChange} placeholder='E-mail' />
                 <Input
                   type='text'
                   name='phone'
                   mask='phone'
                   onChange={handleFormChange}
-                  placeholder='WhatsApp'
+                  placeholder='Telefone*'
                 />
                 <Button
                   name='Enviar'
-                  disabled={
-                    form.email === '' ||
-                    form.email === '' ||
-                    form.name === '' ||
-                    !validateEmail(form.email) ||
-                    !validatePhone(form.phone)
-                  }
+                  disabled={form.name === '' || !validatePhone(form.phone)}
                   className={style.button}
                   loading={loadingMensagem}
                   onClick={() => sendEmailAboutPropertySearchNotFound()}

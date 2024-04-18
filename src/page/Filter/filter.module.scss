@@ -167,6 +167,7 @@
 .box-information-about-filters-form {
   width: 80%;
   margin-bottom: 16px;
+  max-width: 300px;
 
   @media (min-width: $desk) {
     width: 40%;

@@ -61,12 +61,12 @@ const Footer = () => {
           <div className={style.website}>
             <p>Copyright 2023 © GVLAR Imóveis Creci: 37.691-J | Todos os Direitos Reservados</p>
             <div className={style.mn}>
-              <p>Pensado, Criado e Desenvolvido por</p>
+              <p>Feito com muito amor e acuçar</p>
               <a
                 className={style.mn__link}
                 target='_black'
                 rel='noopener'
-                href='https://www.instagram.com/donuts.tech/'
+                href='https://www.donutstech.com.br'
               >
                 <div />
                 <LogoTipoDT />

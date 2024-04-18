@@ -57,12 +57,12 @@ const FooterMobile = () => {
             className={style.mn}
             target='_black'
             rel='noopener'
-            href='https://www.instagram.com/donuts.tech/'
+            href='https://www.donutstech.com.br'
           >
             <div className={style.mn__box}>
-              <p>Pensado, Criado e Desenvolvido por</p>
+              <p>Feito com muito amor e acuçar</p>
               <div>
-                <div className={style.mn__logo}/>
+                <div className={style.mn__logo} />
                 <LogoTipoDT />
               </div>
             </div>

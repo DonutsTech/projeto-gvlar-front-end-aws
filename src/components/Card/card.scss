@@ -1,10 +1,9 @@
 .slick-dots {
-  bottom: 0;
+  bottom: 0 !important;
   margin-bottom: 8px;
 
   li {
-    width: 4px;
-    height: 4px;
+    margin: 0 !important;
   }
 
   /* Define a cor de fundo dos dots inativos */
