@@ -30,14 +30,13 @@ const DateCalendar = ({ onChange, selectedDate }: DateCalendarProps) => {
         customInput={
           <div className={style.calendar}>
             <Calendar />
-            <p>Selecione uma data</p>
           </div>
         }
         locale='pt-BR'
         minDate={tomorrow}
       />
       <div className={style['custom-date']}>
-        {selectedDate && <p>{formatarData(selectedDate)}</p>}
+        {selectedDate ? <p>{formatarData(selectedDate)}</p> : <p>Data</p>}
       </div>
     </div>
   );
