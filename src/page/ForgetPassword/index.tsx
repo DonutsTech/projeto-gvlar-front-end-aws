@@ -11,6 +11,7 @@ import { scrollToTop } from '@/functions/scroll';
 const ForgetPassword = () => {
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -25,6 +26,7 @@ const ForgetPassword = () => {
   }, [message]);
 
   const sendEmailForForgetPassword = async () => {
+    setLoading(true);
     const data = await forgetPassword(email);
 
     if (data && 'message' in data) {
@@ -37,10 +39,12 @@ const ForgetPassword = () => {
         type: 'create',
         status: data.statusCode,
       });
+      setLoading(false);
     }
 
     if (data && 'sucess' in data) {
       setMessage({ message: 'Mensagem enviada com sucesso', type: 'create', status: 201 });
+      setLoading(false);
     }
 
     setEmail('');
@@ -75,6 +79,7 @@ const ForgetPassword = () => {
           name='Enviar e-mail'
           disabled={!validateEmail(email)}
           onClick={() => sendEmailForForgetPassword()}
+          loading={loading}
         />
       </form>
     </section>

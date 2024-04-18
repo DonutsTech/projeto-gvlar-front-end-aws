@@ -39,6 +39,7 @@ const Filter = () => {
   const [filterPage, setFilterPage] = useState({} as FilterPageProperty);
   const [form, setForm] = useState({} as FormFiltersEmail);
   const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
+  const [loadingMensagem, setLoadingMensagem] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -174,14 +175,21 @@ const Filter = () => {
   ];
 
   const sendEmailAboutPropertySearchNotFound = async () => {
+    setLoadingMensagem(true);
     const data = await sendEmail({
       ...form,
       subject: 'Solicitação de imovel',
       text: transformationEmailForGvLar(filterPage),
     });
 
+    if (data && 'message' in data) {
+      setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
+      setLoadingMensagem(false);
+    }
+
     if (data && 'sucess' in data) {
       setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+      setLoadingMensagem(false);
     }
   };
 
@@ -322,6 +330,7 @@ const Filter = () => {
                     !validatePhone(form.phone)
                   }
                   className={style.button}
+                  loading={loadingMensagem}
                   onClick={() => sendEmailAboutPropertySearchNotFound()}
                 />
               </form>

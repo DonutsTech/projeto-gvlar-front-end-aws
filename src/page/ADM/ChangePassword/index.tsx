@@ -20,6 +20,7 @@ const ChangePassword = () => {
   const { token, setUser } = useContext(Context);
   const [form, setForm] = useState({} as Form);
   const [message, setMessage] = useState({} as MessageType);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -36,6 +37,7 @@ const ChangePassword = () => {
   );
 
   const handlePasswordNewClick = async () => {
+    setLoading(true);
     const data = await changePassword(token, {
       passwordNew: form.passwordNew,
       passwordOld: form.passwordOld,
@@ -43,11 +45,13 @@ const ChangePassword = () => {
 
     if (data && 'message' in data) {
       setMessage({ message: data.message, status: data.statusCode, type: 'create' });
+      setLoading(false);
     }
 
     if (data && 'email' in data) {
       setMessage({ message: 'Atualizado com sucesso', status: 201, type: 'create' });
       setUser({ ...data });
+      setLoading(false);
     }
   };
 
@@ -95,6 +99,7 @@ const ChangePassword = () => {
             form.passwordOld === ''
           }
           onClick={() => handlePasswordNewClick()}
+          loading={loading}
         />
       </div>
     </form>

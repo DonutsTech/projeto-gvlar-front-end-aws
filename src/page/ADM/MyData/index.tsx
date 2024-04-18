@@ -19,6 +19,7 @@ const MyData = () => {
   const { user, token, setUser } = useContext(Context);
   const [form, setForm] = useState<Form>({} as Form);
   const [message, setMessage] = useState<MessageType>({} as MessageType);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -45,15 +46,18 @@ const MyData = () => {
   );
 
   const handleUpdateClick = async () => {
+    setLoading(true);
     const data = await updateUser(token, { name: form.name, phone: form.phone });
 
     if (data && 'message' in data) {
       setMessage({ message: data.message, status: data.statusCode, type: 'create' });
+      setLoading(false);
     }
 
     if (data && 'phone' in data) {
       setMessage({ message: 'Atualizado com sucesso', status: 201, type: 'create' });
       setUser({ ...data });
+      setLoading(false);
     }
   };
 
@@ -94,6 +98,7 @@ const MyData = () => {
                 form.name === ''
               }
               onClick={() => handleUpdateClick()}
+              loading={loading}
             />
           </div>
         )}

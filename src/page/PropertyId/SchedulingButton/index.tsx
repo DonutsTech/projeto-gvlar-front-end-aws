@@ -26,6 +26,7 @@ const SchedulingButton = (card: TypeCard) => {
   const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [form, setForm] = useState<Form>({} as Form);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleFormChange = useCallback(
     (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,6 +53,7 @@ const SchedulingButton = (card: TypeCard) => {
 
   const toggleModal = () => {
     setOpenModal(!openModal);
+    setForm({} as Form);
   };
 
   useEffect(() => {
@@ -63,6 +65,7 @@ const SchedulingButton = (card: TypeCard) => {
   }, [message]);
 
   const sendEmailAboutSchedule = async () => {
+    setLoading(true);
     const data = await sendEmail({
       name: form.name,
       email: form.email,
@@ -77,12 +80,16 @@ const SchedulingButton = (card: TypeCard) => {
       }. Gostaríamos de confirmar a disponibilidade deste imóvel para a data mencionada.`,
     });
 
+    console.log(data);
+
     if (data && 'message' in data) {
       setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
+      setLoading(false);
     }
 
     if (data && 'sucess' in data) {
       setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+      setLoading(false);
     }
   };
 
@@ -163,6 +170,7 @@ const SchedulingButton = (card: TypeCard) => {
                   onClick={() => {
                     sendEmailAboutSchedule();
                   }}
+                  loading={loading}
                 />
               </div>
             </form>

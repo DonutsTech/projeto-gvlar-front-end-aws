@@ -21,6 +21,8 @@ interface LoginAndRegisterMobileProps {
   handleLoginClick: () => Promise<void>;
   handleRegisterClick: (body: CreateUserClient) => Promise<void>;
   handleResendEmailClick: () => Promise<void>;
+  loadingLogin: boolean;
+  loadingCreate: boolean;
 }
 
 const LoginAndRegisterMobile: React.FC<LoginAndRegisterMobileProps> = ({
@@ -32,6 +34,8 @@ const LoginAndRegisterMobile: React.FC<LoginAndRegisterMobileProps> = ({
   handleLoginClick,
   handleRegisterClick,
   handleResendEmailClick,
+  loadingCreate,
+  loadingLogin,
 }: LoginAndRegisterMobileProps) => {
   const [start, setStart] = useState<boolean>(false);
 
@@ -64,6 +68,7 @@ const LoginAndRegisterMobile: React.FC<LoginAndRegisterMobileProps> = ({
             name='Entrar'
             disabled={login.email === '' || login.password === '' || !validateEmail(login.email)}
             onClick={() => handleLoginClick()}
+            loading={loadingLogin}
           />
         </div>
       </form>
@@ -160,6 +165,7 @@ const LoginAndRegisterMobile: React.FC<LoginAndRegisterMobileProps> = ({
                     phone: create.phone,
                   })
                 }
+                loading={loadingCreate}
               />
             </div>
           </form>

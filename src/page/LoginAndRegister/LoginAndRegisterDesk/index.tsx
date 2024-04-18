@@ -20,6 +20,8 @@ interface LoginAndRegisterDeskProps {
   handleLoginClick: () => Promise<void>;
   handleRegisterClick: (body: CreateUserClient) => Promise<void>;
   handleResendEmailClick: () => Promise<void>;
+  loadingLogin: boolean;
+  loadingCreate: boolean;
 }
 
 const LoginAndRegisterDesk: React.FC<LoginAndRegisterDeskProps> = ({
@@ -31,6 +33,8 @@ const LoginAndRegisterDesk: React.FC<LoginAndRegisterDeskProps> = ({
   login,
   message,
   handleResendEmailClick,
+  loadingCreate,
+  loadingLogin,
 }: LoginAndRegisterDeskProps) => {
   return (
     <div className={style.main}>
@@ -63,6 +67,7 @@ const LoginAndRegisterDesk: React.FC<LoginAndRegisterDeskProps> = ({
             name='Entrar'
             disabled={login.email === '' || login.password === '' || !validateEmail(login.email)}
             onClick={() => handleLoginClick()}
+            loading={loadingLogin}
           />
         </div>
       </form>
@@ -154,6 +159,7 @@ const LoginAndRegisterDesk: React.FC<LoginAndRegisterDeskProps> = ({
                   phone: create.phone,
                 })
               }
+              loading={loadingCreate}
             />
           </div>
         </form>

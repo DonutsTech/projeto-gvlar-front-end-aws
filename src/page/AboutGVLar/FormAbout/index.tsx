@@ -5,6 +5,8 @@ import { FormEvent, useCallback, useState } from 'react';
 import { validateEmail, validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
 import { Environment } from '@/env';
+import Message from '@/components/Message';
+import { Message as TypeMessage } from '@/types';
 
 interface Form {
   name: string;
@@ -16,6 +18,8 @@ interface Form {
 
 const FormAbout = () => {
   const [form, setForm] = useState<Form>({} as Form);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
 
   const handleFormChange = useCallback(
     (e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,6 +32,7 @@ const FormAbout = () => {
   );
 
   const sendEmailAboutGVLar = async () => {
+    setLoading(true);
     const data = await sendEmail({
       name: form.name,
       email: form.email,
@@ -36,11 +41,20 @@ const FormAbout = () => {
       text: form.text,
     });
 
-    console.log(data);
+    if (data && 'message' in data) {
+      setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
+      setLoading(false);
+    }
+
+    if (data && 'sucess' in data) {
+      setMessage({ message: 'Mensagem enviada', status: 201, type: 'mensagem' });
+      setLoading(false);
+    }
   };
 
   return (
     <div className={style.form}>
+      {!(message.message === '') && <Message mss={message} />}
       <Input
         type='text'
         name='name'
@@ -52,6 +66,7 @@ const FormAbout = () => {
         type='text'
         name='phone'
         placeholder='Telefone*'
+        mask='phone'
         onChange={handleFormChange}
         value={form.phone === undefined ? '' : form.phone}
       />
@@ -80,6 +95,7 @@ const FormAbout = () => {
           disabled={form.name === '' || !validatePhone(form.phone) || !validateEmail(form.email)}
           name='Enviar'
           onClick={() => sendEmailAboutGVLar()}
+          loading={loading}
         />
       </div>
     </div>

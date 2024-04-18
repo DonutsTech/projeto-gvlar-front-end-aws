@@ -28,6 +28,7 @@ const ResetPassword = () => {
 
   const [reset, setReset] = useState<Reset>({} as Reset);
   const [message, setMessage] = useState<TypeMessage>({} as TypeMessage);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -73,7 +74,6 @@ const ResetPassword = () => {
       if (value !== '' && (name === 'one' || name === 'two' || name === 'three')) {
         const nextFieldName = name === 'one' ? 'two' : name === 'two' ? 'three' : 'four';
         const nextField = inputRefs[nextFieldName].current;
-        console.log(nextField);
         if (nextField) {
           nextField.focus();
         }
@@ -83,6 +83,7 @@ const ResetPassword = () => {
   );
 
   const handleResetPasswordOnClick = async () => {
+    setLoading(true);
     let decodeId: number = 0;
 
     if (id) {
@@ -99,6 +100,7 @@ const ResetPassword = () => {
         type: 'create',
         status: data.statusCode,
       });
+      setLoading(false);
     }
 
     if (data && 'sucess' in data) {
@@ -108,6 +110,7 @@ const ResetPassword = () => {
         type: 'create',
         status: 201,
       });
+      setLoading(true);
     }
   };
 
@@ -201,6 +204,7 @@ const ResetPassword = () => {
           name='Alterar Senha'
           disabled={disabledResetPassword(reset)}
           onClick={() => handleResetPasswordOnClick()}
+          loading={loading}
         />
       </form>
     </section>

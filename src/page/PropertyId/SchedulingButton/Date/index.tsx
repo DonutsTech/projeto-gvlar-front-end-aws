@@ -28,8 +28,9 @@ const DateCalendar = ({ onChange, selectedDate }: DateCalendarProps) => {
         showYearDropdown
         dropdownMode='scroll'
         customInput={
-          <div>
+          <div className={style.calendar}>
             <Calendar />
+            <p>Selecione uma data</p>
           </div>
         }
         locale='pt-BR'

@@ -18,6 +18,8 @@ const LoginAndRegister = () => {
   const [message, setMessage] = useState<Message>({} as Message);
   const [login, setLogin] = useState<Login>({} as Login);
   const [create, setCreate] = useState<CreateUser>({ check: true } as CreateUser);
+  const [loadingLogin, setLoadingLogin] = useState<boolean>(false);
+  const [loadingCreate, setLoadingCreate] = useState<boolean>(false);
 
   useEffect(() => {
     scrollToTop();
@@ -54,13 +56,16 @@ const LoginAndRegister = () => {
   );
 
   const handleLoginClick = async () => {
+    setLoadingLogin(true);
     const data = await loginUser(login);
 
     if (data && 'message' in data) {
       setMessage({ message: data.message, type: 'login', status: data.statusCode });
+      setLoadingLogin(false);
     }
 
     if (data && 'user' in data) {
+      setLoadingLogin(false);
       setUser(data.user);
       setToken(data.accessToken);
 
@@ -69,10 +74,12 @@ const LoginAndRegister = () => {
   };
 
   const handleRegisterClick = async (body: CreateUserClient) => {
+    setLoadingCreate(true);
     const data = await registerUser(body);
 
     if (data && 'message' in data) {
       setMessage({ message: data.message, type: 'create', status: data.statusCode });
+      setLoadingCreate(false);
     }
 
     if (data && 'user' in data) {
@@ -81,6 +88,7 @@ const LoginAndRegister = () => {
       )}! Seu cadastro foi realizado com sucesso! Enviamos um link de confirmação para seu e-mail`;
 
       setMessage({ message: text, type: 'create', status: 201 });
+      setLoadingCreate(false);
     }
 
     setCreate({ check: true } as CreateUser);
@@ -108,6 +116,8 @@ const LoginAndRegister = () => {
         handleCreateChange={handleCreateChange}
         handleRegisterClick={handleRegisterClick}
         handleResendEmailClick={handleResendEmailClick}
+        loadingCreate={loadingCreate}
+        loadingLogin={loadingLogin}
       />
       <LoginAndRegisterDesk
         login={login}
@@ -118,6 +128,8 @@ const LoginAndRegister = () => {
         handleCreateChange={handleCreateChange}
         handleRegisterClick={handleRegisterClick}
         handleResendEmailClick={handleResendEmailClick}
+        loadingCreate={loadingCreate}
+        loadingLogin={loadingLogin}
       />
     </div>
   );
