@@ -80,8 +80,6 @@ const SchedulingButton = (card: TypeCard) => {
       }. Gostaríamos de confirmar a disponibilidade deste imóvel para a data mencionada.`,
     });
 
-    console.log(data);
-
     if (data && 'message' in data) {
       setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
       setLoading(false);
@@ -92,6 +90,8 @@ const SchedulingButton = (card: TypeCard) => {
       setLoading(false);
     }
   };
+
+  console.log(message);
 
   return (
     <>
