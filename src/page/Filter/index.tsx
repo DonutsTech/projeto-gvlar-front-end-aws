@@ -205,7 +205,7 @@ const Filter = () => {
           fetchData(1, {});
         }
       }
-    }, 10000);
+    }, 3000);
   }, [message, fetchData]);
 
   return (
@@ -313,14 +313,27 @@ const Filter = () => {
               </p>
               {!(message.message === '') && <Message mss={message} />}
               <form className={style['box-information-about-filters-form']}>
-                <Input type='text' name='name' onChange={handleFormChange} placeholder='Nome*' />
-                <Input type='text' name='email' onChange={handleFormChange} placeholder='E-mail' />
+                <Input
+                  type='text'
+                  name='name'
+                  onChange={handleFormChange}
+                  placeholder='Nome*'
+                  value={form.name === undefined ? '' : form.name}
+                />
+                <Input
+                  type='text'
+                  name='email'
+                  onChange={handleFormChange}
+                  placeholder='E-mail'
+                  value={form.email === undefined ? '' : form.email}
+                />
                 <Input
                   type='text'
                   name='phone'
                   mask='phone'
                   onChange={handleFormChange}
                   placeholder='Telefone*'
+                  value={form.phone === undefined ? '' : form.phone}
                 />
                 <Button
                   name='Enviar'
