@@ -123,15 +123,28 @@ const SchedulingButton = (card: TypeCard) => {
             </div>
             <form className={style['box-form']}>
               {!(message.message === '') && <Message mss={message} />}
-              <Input type='text' name='name' placeholder='Nome' onChange={handleFormChange} />
               <Input
                 type='text'
+                name='name'
+                placeholder='Nome'
+                value={form.name === undefined ? '' : form.name}
+                onChange={handleFormChange}
+              />
+              <Input
+                type='text'
+                mask='phone'
                 name='phone'
                 placeholder='Telefone'
                 onChange={handleFormChange}
-                mask='phone'
+                value={form.phone === undefined ? '' : form.phone}
               />
-              <Input type='text' name='email' placeholder='E-mail' onChange={handleFormChange} />
+              <Input
+                type='text'
+                name='email'
+                placeholder='E-mail'
+                onChange={handleFormChange}
+                value={form.email === undefined ? '' : form.email}
+              />
               <div>
                 <h2 className={style['title-calendar']}>Selecione a melhor data para visitação:</h2>
                 <div className={style['box-calendar']}>
@@ -162,6 +175,7 @@ const SchedulingButton = (card: TypeCard) => {
                 name='obs'
                 onChange={handleFormChange}
                 placeholder='Observação'
+                value={form.obs === undefined ? '' : form.obs}
               />
               <div className={style['box-button']}>
                 <Button
