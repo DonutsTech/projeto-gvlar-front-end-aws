@@ -1,8 +1,8 @@
 import Input from '@/components/Input';
 import style from './formAbout.module.scss';
 import Button from '@/components/Button';
-import { FormEvent, useCallback, useState } from 'react';
-import { validatePhone } from '@/functions/validate';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
+import { validateEmail, validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
 import { Environment } from '@/env';
 import Message from '@/components/Message';
@@ -29,6 +29,14 @@ const FormAbout = () => {
     },
     [form],
   );
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (message.message) {
+        setMessage({} as TypeMessage);
+      }
+    }, 3000);
+  }, [message]);
 
   const sendEmailAboutGVLar = async () => {
     setLoading(true);
@@ -74,7 +82,7 @@ const FormAbout = () => {
       <Input
         type='text'
         name='email'
-        placeholder='E-mail'
+        placeholder='E-mail*'
         onChange={handleFormChange}
         value={form.email === undefined ? '' : form.email}
       />
@@ -93,7 +101,12 @@ const FormAbout = () => {
           </a>
         </div>
         <Button
-          disabled={form.name === '' || !validatePhone(form.phone) || form.text === ''}
+          disabled={
+            form.name === '' ||
+            !validatePhone(form.phone) ||
+            form.text === '' ||
+            !validateEmail(form.email)
+          }
           name='Enviar'
           onClick={() => sendEmailAboutGVLar()}
           loading={loading}
