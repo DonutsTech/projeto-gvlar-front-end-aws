@@ -35,7 +35,7 @@ const FormAbout = () => {
       if (message.message) {
         setMessage({} as TypeMessage);
       }
-    }, 3000);
+    }, 5000);
   }, [message]);
 
   const sendEmailAboutGVLar = async () => {
