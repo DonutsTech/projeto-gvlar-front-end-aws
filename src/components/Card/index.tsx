@@ -69,8 +69,16 @@ const Card: React.FC<CardProps> = ({
       <div className={style.images}>
         <Slider {...settings}>
           {photographs.length > 0 ? (
-            photographs.map(({ id, describe, url }) => (
-              <img key={id} src={`${Environment.URL_IMAGE}/${url}`} alt={describe} />
+            photographs.map(({ id, describe, url, propertyId }) => (
+              <img
+                key={id}
+                src={`${Environment.URL_IMAGE}/${url}`}
+                alt={
+                  describe || describe !== ''
+                    ? describe
+                    : `Foto do imovel ${propertyId} caso queria saber mais entre em contato`
+                }
+              />
             ))
           ) : (
             <img src={imageEmpty} alt='imóvel ainda sem imagem' />
@@ -131,8 +139,8 @@ const Card: React.FC<CardProps> = ({
               {!(sell === null) && sell > 0
                 ? transformationFloatString(sell)
                 : sell === 0
-                ? 'A combinar'
-                : '-'}
+                  ? 'A combinar'
+                  : '-'}
             </p>
           </div>
           <div className={style.value}>
@@ -142,8 +150,8 @@ const Card: React.FC<CardProps> = ({
               {!(rental === null) && rental > 0
                 ? transformationFloatString(rental)
                 : rental === 0
-                ? 'A combinar'
-                : '-'}
+                  ? 'A combinar'
+                  : '-'}
             </p>
           </div>
         </div>

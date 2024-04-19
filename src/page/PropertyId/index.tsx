@@ -109,8 +109,16 @@ const PropertyId = () => {
               <div className={style.glider}>
                 <Slider {...settings}>
                   {data.photographs.length > 0 ? (
-                    data.photographs.map(({ id, describe, url }) => (
-                      <ModalImage key={id} img={`${Environment.URL_IMAGE}/${url}`} alt={describe} />
+                    data.photographs.map(({ id, describe, url, propertyId }) => (
+                      <ModalImage
+                        key={id}
+                        img={`${Environment.URL_IMAGE}/${url}`}
+                        alt={
+                          describe || describe !== ''
+                            ? describe
+                            : `Foto do imovel ${propertyId} caso queria saber mais entre em contato`
+                        }
+                      />
                     ))
                   ) : (
                     <ModalImage img={imageEmpty} alt='imóvel ainda sem imagem' />

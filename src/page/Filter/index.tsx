@@ -17,7 +17,7 @@ import {
 } from '@/functions/transformation';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import { validatePhone } from '@/functions/validate';
+import { validateEmail, validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
 import { useLocation } from 'react-router-dom';
 import Message from '@/components/Message';
@@ -324,7 +324,7 @@ const Filter = () => {
                   type='text'
                   name='email'
                   onChange={handleFormChange}
-                  placeholder='E-mail'
+                  placeholder='E-mail*'
                   value={form.email === undefined ? '' : form.email}
                 />
                 <Input
@@ -337,7 +337,9 @@ const Filter = () => {
                 />
                 <Button
                   name='Enviar'
-                  disabled={form.name === '' || !validatePhone(form.phone)}
+                  disabled={
+                    form.name === '' || !validatePhone(form.phone) || !validateEmail(form.email)
+                  }
                   className={style.button}
                   loading={loadingMensagem}
                   onClick={() => sendEmailAboutPropertySearchNotFound()}

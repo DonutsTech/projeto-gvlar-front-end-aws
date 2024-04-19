@@ -2,7 +2,7 @@ import Input from '@/components/Input';
 import style from './formAbout.module.scss';
 import Button from '@/components/Button';
 import { FormEvent, useCallback, useState } from 'react';
-import { validateEmail, validatePhone } from '@/functions/validate';
+import { validatePhone } from '@/functions/validate';
 import { sendEmail } from '@/service/api/email';
 import { Environment } from '@/env';
 import Message from '@/components/Message';
@@ -13,7 +13,6 @@ interface Form {
   phone: string;
   email: string;
   text: string;
-  check: boolean;
 }
 
 const FormAbout = () => {
@@ -40,6 +39,8 @@ const FormAbout = () => {
       subject: `Solicitação de contato`,
       text: form.text,
     });
+
+    setForm({} as Form);
 
     if (data && 'message' in data) {
       setMessage({ message: 'Mensagem não enviado', type: 'mensagem', status: data.statusCode });
@@ -92,7 +93,7 @@ const FormAbout = () => {
           </a>
         </div>
         <Button
-          disabled={form.name === '' || !validatePhone(form.phone) || !validateEmail(form.email)}
+          disabled={form.name === '' || !validatePhone(form.phone) || form.text === ''}
           name='Enviar'
           onClick={() => sendEmailAboutGVLar()}
           loading={loading}
