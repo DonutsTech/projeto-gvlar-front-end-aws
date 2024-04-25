@@ -5,7 +5,7 @@
   justify-content: center;
 
   svg {
-    width: 12px;
+    width: 12px !important;
     height: auto;
     animation: rotate 3s infinite;
     @keyframes rotate {
