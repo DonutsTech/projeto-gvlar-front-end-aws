@@ -6,7 +6,7 @@
 
   svg {
     width: 12px !important;
-    height: auto;
+    height: auto !important;
     animation: rotate 3s infinite;
     @keyframes rotate {
       from {
