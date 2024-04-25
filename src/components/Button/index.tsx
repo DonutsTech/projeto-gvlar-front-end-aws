@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       className={className ? className : style.button}
     >
-      {name ? (
+      {loading ? (
         <>
           <LoadingGV />
         </>
