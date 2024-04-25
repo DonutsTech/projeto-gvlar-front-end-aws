@@ -1,14 +1,16 @@
 .loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
   width: auto !important;
   height: auto !important;
+  margin: 0 !important;
 
   svg {
     width: 12px !important;
     height: auto !important;
+    margin: 0 !important;
     animation: rotate 3s infinite;
     @keyframes rotate {
       from {
